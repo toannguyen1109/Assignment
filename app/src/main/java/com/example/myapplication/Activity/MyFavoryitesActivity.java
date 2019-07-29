@@ -37,7 +37,7 @@ public class MyFavoryitesActivity extends AppCompatActivity {
         }
 
 
-        adapterFavorites = new AdapterFavorites(modelFavoritesList);
+        adapterFavorites = new AdapterFavorites(modelFavoritesList,this);
         mRvFavorites.setAdapter(adapterFavorites);
         mRvFavorites.setLayoutManager(new GridLayoutManager(this, 2));
 

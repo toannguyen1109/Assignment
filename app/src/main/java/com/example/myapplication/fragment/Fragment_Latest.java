@@ -35,9 +35,11 @@ public class Fragment_Latest extends Fragment {
         }
 
         Log.e("size", modelLatestList.size() + "");
-        adapterLatest = new AdapterLatest(modelLatestList);
+        adapterLatest = new AdapterLatest(modelLatestList,getActivity());
         mGridViewLatest.setAdapter(adapterLatest);
         mGridViewLatest.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+
+
         return view;
     }
 

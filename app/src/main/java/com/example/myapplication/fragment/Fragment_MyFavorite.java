@@ -33,7 +33,7 @@ public class Fragment_MyFavorite extends Fragment {
         }
 
 
-        adapterFavorites = new AdapterFavorites(modelFavoritesList);
+        adapterFavorites = new AdapterFavorites(modelFavoritesList,getActivity());
         mRvFavorites.setAdapter(adapterFavorites);
         mRvFavorites.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 

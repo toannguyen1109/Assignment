@@ -42,7 +42,7 @@ public class LatestActivity extends AppCompatActivity {
         }
 
         Log.e("size",modelLatestList.size()+"");
-        adapterLatest = new AdapterLatest(modelLatestList);
+        adapterLatest = new AdapterLatest(modelLatestList,this);
         mGridViewLatest.setAdapter(adapterLatest);
         mGridViewLatest.setLayoutManager(new GridLayoutManager(this, 2));
 

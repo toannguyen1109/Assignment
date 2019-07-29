@@ -1,6 +1,7 @@
 package com.example.myapplication.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,16 +10,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.myapplication.Activity.ImageDetailActivity;
 import com.example.myapplication.Model.ModelLatest;
 import com.example.myapplication.R;
+import com.example.myapplication.fragment.Fragment_Latest;
 
 import java.util.List;
 
 public class AdapterLatest extends RecyclerView.Adapter<AdapterLatest.ViewHolder> {
     private List<ModelLatest> modelLatestList;
+    Context context;
 
-    public AdapterLatest(List<ModelLatest> modelLatestList) {
+
+
+    public AdapterLatest(List<ModelLatest> modelLatestList, Context context) {
         this.modelLatestList = modelLatestList;
+        this.context = context;
     }
 
     @NonNull
@@ -32,6 +39,14 @@ public class AdapterLatest extends RecyclerView.Adapter<AdapterLatest.ViewHolder
         ModelLatest md = modelLatestList.get(i);
         viewHolder.tvCOuntHeart.setText(md.getTvCountHeart());
         viewHolder.tvCountEye.setText(md.getTvCountEye());
+
+        viewHolder.imgContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,ImageDetailActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
