@@ -25,14 +25,12 @@
         <com.github.clans.fab.FloatingActionButton
             app:fab_label="Share"
             app:fab_colorNormal="#B5000000"
-
             android:src="@drawable/share"
             android:layout_width="24dp"
             android:layout_height="24dp" />
         <com.github.clans.fab.FloatingActionButton
             android:src="@drawable/save"
             app:fab_colorNormal="#B5000000"
-
             app:fab_label="Save Image"
             android:layout_width="24dp"
             android:layout_height="24dp" />
@@ -40,7 +38,6 @@
             android:src="@drawable/set"
             app:fab_label="Set As Wallpaper"
             app:fab_colorNormal="#B5000000"
-
             android:layout_width="24dp"
             android:layout_height="24dp" />
     </com.github.clans.fab.FloatingActionMenu>

@@ -22,6 +22,7 @@ import com.example.myapplication.fragment.Fragment_AboutUs;
 import com.example.myapplication.fragment.Fragment_Category;
 import com.example.myapplication.fragment.Fragment_Latest;
 import com.example.myapplication.fragment.Fragment_MyFavorite;
+import com.example.myapplication.fragment.Fragment_home;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         myFindViewById();
 
         ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.container, new Fragment_Latest());
+        ft.replace(R.id.container, new Fragment_home());
         ft.commit();
 
         setSupportActionBar(toolbar);
@@ -129,21 +130,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    private void updateTitleToolbarOnBackPress(){
+    private void updateTitleToolbarOnBackPress() {
 
         fragmentManager.addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
             @Override
             public void onBackStackChanged() {
                 Fragment fr = getSupportFragmentManager().findFragmentById(R.id.container);
-                if(fr!=null){
-                    if (fr.getClass().getSimpleName().equalsIgnoreCase("Fragment_Latest")){
+                if (fr != null) {
+                    if (fr.getClass().getSimpleName().equalsIgnoreCase("Fragment_Latest")) {
                         setTitle(navigationView.getMenu().getItem(0).getTitle());
-                    } else if (fr.getClass().getSimpleName().equalsIgnoreCase("Fragment_Category")){
+                    } else if (fr.getClass().getSimpleName().equalsIgnoreCase("Fragment_Category")) {
                         setTitle(navigationView.getMenu().getItem(1).getTitle());
-                    }else if (fr.getClass().getSimpleName().equalsIgnoreCase("Fragment_MyFavorite")){
+                    } else if (fr.getClass().getSimpleName().equalsIgnoreCase("Fragment_MyFavorite")) {
                         setTitle(navigationView.getMenu().getItem(2).getTitle());
-                    }else if (fr.getClass().getSimpleName().equalsIgnoreCase("Fragment_AboutUs")){
+                    } else if (fr.getClass().getSimpleName().equalsIgnoreCase("Fragment_AboutUs")) {
                         setTitle(navigationView.getMenu().getItem(3).getTitle());
+                    } else if (fr.getClass().getSimpleName().equalsIgnoreCase("Fragment_home")) {
+                        setTitle(navigationView.getMenu().getItem(4).getTitle());
                     }
                 }
             }
