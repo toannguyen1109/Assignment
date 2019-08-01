@@ -19,7 +19,7 @@
             android:textColor="@color/colorWhite"
             android:layout_alignParentEnd="true"
             android:text="@string/more"
-            android:background="#26939d"
+            android:background="@drawable/custom_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>

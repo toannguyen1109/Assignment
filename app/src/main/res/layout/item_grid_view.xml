@@ -18,7 +18,7 @@
         <ImageView
             android:id="@+id/imgIconEye"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/eye_icon_grid_view"
+            android:src="@mipmap/icon_view"
             android:layout_width="24dp"
             android:layout_height="24dp" />
         <TextView
@@ -31,7 +31,7 @@
         <ImageView
             android:id="@+id/imgIconHeart"
             android:layout_marginLeft="16dp"
-            android:src="@drawable/icon_heart_in_grid_view"
+            android:src="@mipmap/icon_favorite"
             android:layout_width="24dp"
             android:layout_height="24dp" />
         <TextView
