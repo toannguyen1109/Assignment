@@ -9,16 +9,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.myapplication.Model.ModelCatagory;
+import com.example.myapplication.ModelCategory.Category;
 import com.example.myapplication.R;
 
 import java.util.List;
 
 public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.ViewHolder> {
 
-    private List<ModelCatagory> modelCatagoryList;
 
-    public AdapterCategory(List<ModelCatagory> modelCatagoryList) {
-        this.modelCatagoryList = modelCatagoryList;
+    private List<Category> categories;
+
+
+    public AdapterCategory(List<Category> categories) {
+        this.categories = categories;
     }
 
     @NonNull
@@ -31,22 +34,25 @@ public class AdapterCategory extends RecyclerView.Adapter<AdapterCategory.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        ModelCatagory md = modelCatagoryList.get(i);
-        viewHolder.tvTitle.setText(md.getTvTitle());
+        Category category = categories.get(i);
+        viewHolder.tvTitle.setText(category.getName());
+        viewHolder.tvCount.setText("("+category.getCount()+")");
     }
 
     @Override
     public int getItemCount() {
-        return modelCatagoryList.size();
+        return categories.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView banner;
         private TextView tvTitle;
+        private TextView tvCount;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             banner = (ImageView) itemView.findViewById(R.id.imgBanner);
             tvTitle = (TextView) itemView.findViewById(R.id.tvTitle);
+            tvCount = (TextView) itemView.findViewById(R.id.tvCount);
         }
     }
 }

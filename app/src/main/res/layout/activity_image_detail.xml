@@ -26,7 +26,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="16dp"
-                android:text="@string/category"
+                android:text="@string/imgDetail"
                 android:textColor="@color/colorWhite"
                 android:textSize="24sp" />
         </LinearLayout>
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content" />
     </android.support.v7.widget.Toolbar>
     <ImageView
-        android:src="@drawable/img_test"
+        android:id="@+id/imgDetail"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <com.github.clans.fab.FloatingActionMenu

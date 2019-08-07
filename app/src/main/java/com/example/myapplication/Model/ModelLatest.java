@@ -1,26 +1,18 @@
 package com.example.myapplication.Model;
 
 public class ModelLatest {
-    private String imgContent;
+
     private String imgIconEye;
     private String imgIconHeart;
     private String tvCountEye;
     private String tvCountHeart;
 
-    public ModelLatest(String imgContent, String imgIconEye, String imgIconHeart, String tvCountEye, String tvCountHeart) {
-        this.imgContent = imgContent;
+    public ModelLatest(String imgIconEye, String imgIconHeart, String tvCountEye, String tvCountHeart) {
+
         this.imgIconEye = imgIconEye;
         this.imgIconHeart = imgIconHeart;
         this.tvCountEye = tvCountEye;
         this.tvCountHeart = tvCountHeart;
-    }
-
-    public String getImgContent() {
-        return imgContent;
-    }
-
-    public void setImgContent(String imgContent) {
-        this.imgContent = imgContent;
     }
 
     public String getImgIconEye() {
