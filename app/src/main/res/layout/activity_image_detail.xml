@@ -48,23 +48,27 @@
         android:layout_height="wrap_content">
 
         <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/iconHeart"
             android:src="@mipmap/icon_heart"
             app:fab_colorNormal="#B5000000"
             android:layout_width="8dp"
             android:layout_height="8dp" />
         <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/iconShare"
             app:fab_label="Share"
             app:fab_colorNormal="#B5000000"
             android:src="@mipmap/icon_share_small"
             android:layout_width="24dp"
             android:layout_height="24dp" />
         <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/imgSave"
             android:src="@mipmap/icon_save_image_small"
             app:fab_colorNormal="#B5000000"
             app:fab_label="Save Image"
             android:layout_width="24dp"
             android:layout_height="24dp" />
         <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/imgSetBg"
             android:src="@mipmap/icon_set_as_wallpaper_small"
             app:fab_label="Set As Wallpaper"
             app:fab_colorNormal="#B5000000"

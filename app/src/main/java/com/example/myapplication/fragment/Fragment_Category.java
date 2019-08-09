@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,12 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myapplication.event.ItemClickRv;
 import com.example.myapplication.Adapter.AdapterCategory;
-import com.example.myapplication.EndlessRecyclerViewScrollListener;
-import com.example.myapplication.Model.ModelCatagory;
 import com.example.myapplication.ModelCategory.Category;
+import com.example.myapplication.ModelPostOfCate.PostOfCate;
 import com.example.myapplication.R;
 import com.example.myapplication.Retrofit.PolyRetrofit;
+import com.example.myapplication.utills.ViewHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,46 +32,41 @@ public class Fragment_Category extends Fragment {
 
     private List<Category> categories;
     private AdapterCategory adapterCategory;
-    private SwipeRefreshLayout mF5;
     private LinearLayoutManager linearLayoutManager;
 
     private int page = 1;
-    private int per_page = 5;
+    private int per_page = 15;
+
+
+    private int per_page_categories = 5;
+    private int paging = 1;
+
+    private List<PostOfCate> postOfCates;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
         initView(view);
-
+// là e ấn vào item trong cate kia xong chuyển màn hình sang act mới có dữ liệu ở dòng
 
         categories = new ArrayList<>();
+        postOfCates = new ArrayList<>();
 
 //        for (int i = 0; i < 10; i++) {
 //            modelCatagoryList.add(new ModelCatagory("", "Animals " + "(" + i + ")"));
 //        }
-
-        adapterCategory = new AdapterCategory(categories);
+        adapterCategory = new AdapterCategory(categories, getActivity(), new ItemClickRv() {
+            @Override
+            public void onItemClick(int position, int id) {
+                // Khi gọi FragmentPostOfCate.newInstance() thì hàm newInstance sẽ chạy đầu tiên nhưng chưa khởi tạo fragment ở đây
+                ViewHelper.switchFragment(getActivity(), FragmentPostOfCate.newInstance(id, position));
+            }
+        });
 
         linearLayoutManager = new LinearLayoutManager(getActivity());
         mRvCate.setAdapter(adapterCategory);
         mRvCate.setLayoutManager(linearLayoutManager);
-//        getData(page, per_page);
-        mF5.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                //lay du lieu
-                page = 1;
-                getData(page, per_page);
-            }
-        });
+        getData(page, per_page);
 
-
-        mRvCate.addOnScrollListener(new EndlessRecyclerViewScrollListener(linearLayoutManager) {
-            @Override
-            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-                per_page = per_page + 1;
-                getData(page, per_page);
-            }
-        });
 
         return view;
     }
@@ -84,7 +79,7 @@ public class Fragment_Category extends Fragment {
                 categories.addAll(response.body());
                 Log.e("size", "onResponse: " + response.body().size());
                 adapterCategory.notifyDataSetChanged();
-                mF5.setRefreshing(false);
+
 
             }
 
@@ -97,6 +92,8 @@ public class Fragment_Category extends Fragment {
 
     private void initView(View view) {
         mRvCate = view.findViewById(R.id.rvCate);
-        mF5 = view.findViewById(R.id.f5);
+
     }
+
+
 }

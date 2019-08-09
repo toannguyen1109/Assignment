@@ -1,7 +1,10 @@
 package com.example.myapplication.Activity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -15,6 +18,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.Toast;
 
 import com.example.myapplication.Model.ModelCatagory;
 import com.example.myapplication.R;
@@ -23,6 +27,7 @@ import com.example.myapplication.fragment.Fragment_Category;
 import com.example.myapplication.fragment.Fragment_Latest;
 import com.example.myapplication.fragment.Fragment_MyFavorite;
 import com.example.myapplication.fragment.Fragment_home;
+import com.example.myapplication.utills.ViewHelper;
 
 import java.util.List;
 
@@ -38,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActivityCompat.requestPermissions(MainActivity.this,
+                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                1);
         myFindViewById();
 
         ft = getSupportFragmentManager().beginTransaction();
@@ -126,7 +134,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         item.setChecked(true);
         setTitle(item.getTitle());
         drawer.closeDrawers();
-
         return true;
     }
 
@@ -151,5 +158,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(MainActivity.this, "Permission accept to read your External storage", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Permission denied to read your External storage", Toast.LENGTH_LONG).show();
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 }

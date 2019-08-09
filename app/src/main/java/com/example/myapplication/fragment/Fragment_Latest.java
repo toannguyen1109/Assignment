@@ -13,9 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.myapplication.Adapter.AdapterLatest;
 import com.example.myapplication.Model.ModelLatest;
-import com.example.myapplication.ModelRetrofit.Post;
-import com.example.myapplication.ModelRetrofit.WpFeaturedmedium;
-import com.example.myapplication.ModelRetrofit.WpFeaturedmedium_;
+import com.example.myapplication.ModelEmbed.Post;
 import com.example.myapplication.R;
 import com.example.myapplication.Retrofit.PolyRetrofit;
 

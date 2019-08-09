@@ -13,10 +13,12 @@
         android:layout_height="match_parent">
 
         <ImageView
+            android:scaleType="centerCrop"
             android:id="@+id/imgBanner"
+            android:adjustViewBounds="true"
             android:layout_width="wrap_content"
             android:layout_height="144dp"
-            android:src="@drawable/banner" />
+            android:src="@drawable/img_aaa" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -33,7 +35,6 @@
             <TextView
                 android:textColor="#FFFFFF"
                 android:id="@+id/tvCount"
-                android:text="(12)"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="24dp" />

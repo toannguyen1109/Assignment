@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,42 +13,40 @@ import android.widget.TextView;
 
 
 import com.example.myapplication.Activity.ImageDetailActivity;
+import com.example.myapplication.Database.DAO;
 import com.example.myapplication.Model.ModelFavorites;
 import com.example.myapplication.Model.ModelLatest;
+import com.example.myapplication.ModelEmbed.Post;
 import com.example.myapplication.R;
+import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterFavorites extends RecyclerView.Adapter<AdapterFavorites.ViewHolder> {
     private List<ModelFavorites> modelFavoritesList;
     Context context;
+    private DAO dao;
 
     public AdapterFavorites(List<ModelFavorites> modelFavoritesList, Context context) {
         this.modelFavoritesList = modelFavoritesList;
         this.context = context;
+        dao = new DAO(context);
+        dao.open();
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        return new ViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_item_grid_view,viewGroup,false));
+        return new ViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.layout_item_grid_view, viewGroup, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         ModelFavorites md = modelFavoritesList.get(i);
-        viewHolder.tvCOuntHeart.setText(md.getTvCountHeart());
-        viewHolder.tvCountEye.setText(md.getTvCountEye());
-
-        viewHolder.imgContent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, ImageDetailActivity.class);
-                context.startActivity(intent);
-            }
-        });
+        Log.e("Strimg img", "onBindViewHolder: " + modelFavoritesList.get(i).getImgContent());
+        Picasso.with(context).load(md.getImgContent()).into(viewHolder.imgContent);
     }
-
 
 
     @Override
@@ -57,17 +56,12 @@ public class AdapterFavorites extends RecyclerView.Adapter<AdapterFavorites.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgContent;
-        ImageView imgIconEye;
-        ImageView imgIconHeart;
-        TextView tvCountEye;
-        TextView tvCOuntHeart;
+
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             imgContent = itemView.findViewById(R.id.imgContent);
-            imgIconEye = itemView.findViewById(R.id.imgIconEye);
-            imgIconHeart = itemView.findViewById(R.id.imgIconHeart);
-            tvCountEye = itemView.findViewById(R.id.tvCountEye);
-            tvCOuntHeart = itemView.findViewById(R.id.tvCountHeart);
+
         }
     }
 }
