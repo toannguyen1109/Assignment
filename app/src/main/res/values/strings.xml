@@ -31,4 +31,6 @@
     <string name="latestHome">Latest Wallpaper</string>
     <string name="imgDetail">Image Detail</string>
     <string name="getPostOfCate">List Post</string>
+
+    <string name="facebook_app_id">Facebook App ID</string>
 </resources>
