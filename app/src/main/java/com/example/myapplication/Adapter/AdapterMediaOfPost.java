@@ -42,6 +42,17 @@ public class AdapterMediaOfPost extends RecyclerView.Adapter<AdapterMediaOfPost.
             MediaOfPost mediaOfPost = mediaOfPosts.get(i);
             Picasso.with(context).load(mediaOfPost.getSourceUrl()).into(viewHolder.imageView);
         }
+
+        viewHolder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context,ImageDetailActivity.class);
+                MediaOfPost mediaOfPost = mediaOfPosts.get(i);
+                String a = mediaOfPost.getSourceUrl();
+                intent.putExtra("link",a);
+                context.startActivity(intent);
+            }
+        });
 //
 //        viewHolder.imageView.setOnClickListener(new View.OnClickListener() {
 //            @Override

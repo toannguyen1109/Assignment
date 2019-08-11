@@ -59,7 +59,9 @@ public class AdapterLatest extends RecyclerView.Adapter<AdapterLatest.ViewHolder
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context,ImageDetailActivity.class);
-                intent.putExtra("position",i);
+                Post post = load.get(i);
+                String a = post.getEmbedded().getWpFeaturedmedia().get(0).getSourceUrl();
+                intent.putExtra("link",a);
                 context.startActivity(intent);
             }
         });
