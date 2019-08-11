@@ -48,7 +48,7 @@ public class Fragment_Latest extends Fragment {
                     Log.e("abcde", "onResponse: " + response.body().get(0).getEmbedded().getWpFeaturedmedia().get(0).getMediaDetails().getSizes().getMediumLarge().getSourceUrl());
                 }
             }
-            // ok
+
             @Override
             public void onFailure(Call<List<Post>> call, Throwable t) {
 
@@ -60,12 +60,6 @@ public class Fragment_Latest extends Fragment {
 
         modelLatestList = new ArrayList<>();
 
-//
-//        for (int i = 0; i < 40; i++) {
-//            modelLatestList.add(new ModelLatest( "", "", i + "", i + ""));
-//        }
-//
-//        Log.e("size", load.size() + "");
 
 
         return view;

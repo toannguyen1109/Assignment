@@ -27,7 +27,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FragmentPostOfCate extends Fragment implements ItemClickRv {
-    // key này string tùy mình đặt. A đặt ntn để tránh trùng nếu sau này có nhiều sử lí khác
     public static final String KEY_POSITION = "FragmentPostOfCate.KEY_POSITION";
     public static final String KEY_ID = "FragmentPostOfCate.KEY_ID";
 
@@ -43,26 +42,18 @@ public class FragmentPostOfCate extends Fragment implements ItemClickRv {
         postOfCates = new ArrayList<>();
     }
 
-    // fun này tạo ra để hứng dữ liệu
-    // ở đây có 2 param là id với position
+
 
     public static FragmentPostOfCate newInstance(int id, int position) {
-        // Bundle dùng để đóng gói dữ liệu (d1: khởi tạo bundle)
         Bundle args = new Bundle();
 
-        // đóng gói id vs position để chuyển
-        // có 2 param, param1 là key, param2 là dữ liệu
+
         args.putInt(KEY_ID, id);
         args.putInt(KEY_POSITION, position);
 
-        // Giờ mới khởi tạo fragment FragmentPostOfCate
         FragmentPostOfCate fragment = new FragmentPostOfCate();
-        // setArgument ở đây giống như intent
-        // id vs position như 1 món phụ kiện
-        // Bundle giống như thùng hàng
-        // Argument như 1 phương tiện vận chuyển thùng hàng (bên trong có phụ kiện)
+
         fragment.setArguments(args);
-        // khi xong hết rồi mới chạy vào contractor rồi mới đến vòng đời của fragment
         return fragment;
     }
 
@@ -70,7 +61,6 @@ public class FragmentPostOfCate extends Fragment implements ItemClickRv {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.activity_post_of_cate_acitivity, container, false);
-        // fun này giống setcontenview ở bên act có nhiệm vụ nhúng giao diện
 
 
     }
@@ -78,20 +68,12 @@ public class FragmentPostOfCate extends Fragment implements ItemClickRv {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        // sau đó chạy đến fun này
         initView(view);
         initData();
         postOfCates = new ArrayList<>();
 
         setupAdapter();
 
-//        adapterListPost = new AdapterListPost(postOfCates, new ItemClickRv() {
-//            @Override
-//            public void onItemClick(int position, int id) {
-//                // Khi gọi FragmentPostOfCate.newInstance() thì hàm newInstance sẽ chạy đầu tiên nhưng chưa khởi tạo fragment ở đây
-//                ViewHelper.switchFragment(getActivity(), FragmentMediaOfPost.newInstanceMedia(id, position));
-//            }
-//        });
     }
 
     private void setupAdapter() {
@@ -106,9 +88,8 @@ public class FragmentPostOfCate extends Fragment implements ItemClickRv {
     }
 
     private void initData() {
-        // ở đây mình sẽ kiểm tra xem có tín hiệu vận chuyển dữ liệu gì không?
+
         if (getArguments() != null) {
-            // nếu có thì lấy ra id vs postion theo cái key
             id = getArguments().getInt(KEY_ID);
             position = getArguments().getInt(KEY_POSITION);
         }

@@ -20,13 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterLatest extends RecyclerView.Adapter<AdapterLatest.ViewHolder> {
-    private List<ModelLatest> modelLatestList;
     private List<Post> load;
-
-    public AdapterLatest(List<ModelLatest> modelLatestList, Context context) {
-        //chưa gọi tới fun này nên null
-        this.modelLatestList = modelLatestList;
-    }
 
     public AdapterLatest(List<Post> load) {
         this.load = load;
@@ -41,19 +35,12 @@ public class AdapterLatest extends RecyclerView.Adapter<AdapterLatest.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
         final Context context = viewHolder.itemView.getContext();
-//        ModelLatest md = modelLatestList.get(i);
-//        Post mdd = load.get(i);
-//        viewHolder.tvCOuntHeart.setText(md.getTvCountHeart());
-//        viewHolder.tvCountEye.setText(md.getTvCountEye());
+
         if (load !=null) {
             Post post = load.get(i);
             Picasso.with(context).load(post.getEmbedded().getWpFeaturedmedia().get(0).getSourceUrl()).into(viewHolder.imgContent);
         }
-
-                    //                      .getEmbedded().getWpFeaturedmedia().get(0).getMediaDetails().getSizes().getMediumLarge().getSourceUrl()
-//        Log.e("img", ""+ load.get(i).getEmbedded().getWpFeaturedmedia().get(0).getMediaDetails().getSizes().getLarge().getSourceUrl());
-
-//        load.get(i).getEmbedded().getWpFeaturedmedia().get(0).getMediaDetails().getSizes().getLarge();
+    load.get(i).getEmbedded().getWpFeaturedmedia().get(0).getMediaDetails().getSizes().getLarge();
 
         viewHolder.imgContent.setOnClickListener(new View.OnClickListener() {
             @Override

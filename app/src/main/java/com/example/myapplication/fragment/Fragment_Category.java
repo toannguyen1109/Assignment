@@ -37,27 +37,19 @@ public class Fragment_Category extends Fragment {
     private int page = 1;
     private int per_page = 15;
 
-
-    private int per_page_categories = 5;
-    private int paging = 1;
-
     private List<PostOfCate> postOfCates;
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
         initView(view);
-// là e ấn vào item trong cate kia xong chuyển màn hình sang act mới có dữ liệu ở dòng
+
 
         categories = new ArrayList<>();
         postOfCates = new ArrayList<>();
 
-//        for (int i = 0; i < 10; i++) {
-//            modelCatagoryList.add(new ModelCatagory("", "Animals " + "(" + i + ")"));
-//        }
         adapterCategory = new AdapterCategory(categories, getActivity(), new ItemClickRv() {
             @Override
             public void onItemClick(int position, int id) {
-                // Khi gọi FragmentPostOfCate.newInstance() thì hàm newInstance sẽ chạy đầu tiên nhưng chưa khởi tạo fragment ở đây
                 ViewHelper.switchFragment(getActivity(), FragmentPostOfCate.newInstance(id, position));
             }
         });

@@ -72,22 +72,6 @@ public class ImageDetailActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-//        PolyRetrofit.getInstance().getSourceUrl().enqueue(new Callback<List<Post>>() {
-//            @Override
-//            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-//                String source = response.body().get(position).getEmbedded().getWpFeaturedmedia().get(0).getSourceUrl();
-//                posts.addAll(response.body());
-//                Log.e("source", "onResponse: " + source);
-//
-//                Picasso.with(ImageDetailActivity.this).load(source).into(mImgDetail);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Post>> call, Throwable t) {
-//
-//            }
-//        });
-
 
         mImgSetBg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,7 +89,6 @@ public class ImageDetailActivity extends AppCompatActivity {
                 Log.e("data", "onClick: " + link );
                 dao.Them(md,ImageDetailActivity.this);
                 Log.d("sizeHeart", "" + modelFavoritesList.size());
-//                }
 
 
             }
@@ -114,8 +97,6 @@ public class ImageDetailActivity extends AppCompatActivity {
         mIconShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                String link = posts.get(position).getEmbedded().getWpFeaturedmedia().get(0).getSourceUrl();
-//                Log.e("share", "onClick: " + link);
                 Intent share = new Intent(Intent.ACTION_SEND);
                 share.setType("text/plain");
                 share.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
@@ -129,29 +110,6 @@ public class ImageDetailActivity extends AppCompatActivity {
         mImgSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                PolyRetrofit.getInstance().getSourceUrl().enqueue(new Callback<List<Post>>() {
-//                    @Override
-//                    public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-//                        String source = response.body().get(position).getEmbedded().getWpFeaturedmedia().get(0).getSourceUrl();
-//                        Log.e("source", "onResponse: " + source);
-//                        imageDownload(ImageDetailActivity.this, source, new IDownloadListener() {
-//                            @Override
-//                            public void success() {
-//                                Toast.makeText(ImageDetailActivity.this, "download success", Toast.LENGTH_SHORT).show();
-//                            }
-//
-//                            @Override
-//                            public void failed() {
-//                                Toast.makeText(ImageDetailActivity.this, "download failed", Toast.LENGTH_SHORT).show();
-//                            }
-//                        });
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<List<Post>> call, Throwable t) {
-//
-//                    }
-//                });
                 imageDownload(ImageDetailActivity.this, link, new IDownloadListener() {
                     @Override
                     public void success() {
@@ -178,8 +136,6 @@ public class ImageDetailActivity extends AppCompatActivity {
         mImgSave = findViewById(R.id.imgSave);
         mImgSetBg = findViewById(R.id.imgSetBg);
     }
-
-    //save image
     public static void imageDownload(Context ctx, String url, final IDownloadListener downloadListener) {
         Picasso.with(ctx)
                 .load(url)

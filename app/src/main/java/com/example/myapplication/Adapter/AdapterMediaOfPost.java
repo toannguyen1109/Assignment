@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.myapplication.Activity.ImageDetailActivity;
-import com.example.myapplication.ModelEmbed.Post;
 import com.example.myapplication.ModelMediaOfPost.MediaOfPost;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
@@ -53,15 +52,7 @@ public class AdapterMediaOfPost extends RecyclerView.Adapter<AdapterMediaOfPost.
                 context.startActivity(intent);
             }
         });
-//
-//        viewHolder.imageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(context, ImageDetailActivity.class);
-//                intent.putExtra("position",i);
-//                context.startActivity(intent);
-//            }
-//        });
+
     }
 
     @Override
