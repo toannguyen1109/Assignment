@@ -10,7 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.myapplication.Activity.ImageDetailActivity;
-import com.example.myapplication.ModelMediaOfPost.MediaOfPost;
+
+import com.example.myapplication.Modell.MediaOfPost;
 import com.example.myapplication.R;
 import com.squareup.picasso.Picasso;
 

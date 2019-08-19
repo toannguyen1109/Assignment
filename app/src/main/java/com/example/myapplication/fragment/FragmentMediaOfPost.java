@@ -12,8 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.myapplication.Adapter.AdapterMediaOfPost;
+import com.example.myapplication.Modell.MediaOfPost;
 import com.example.myapplication.event.ItemClickRv;
-import com.example.myapplication.ModelMediaOfPost.MediaOfPost;
+
 import com.example.myapplication.R;
 import com.example.myapplication.Retrofit.PolyRetrofit;
 

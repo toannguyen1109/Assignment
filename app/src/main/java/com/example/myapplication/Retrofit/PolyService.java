@@ -1,9 +1,10 @@
 package com.example.myapplication.Retrofit;
 
 import com.example.myapplication.ModelCategory.Category;
-import com.example.myapplication.ModelMediaOfPost.MediaOfPost;
+;
 import com.example.myapplication.ModelPostOfCate.PostOfCate;
 import com.example.myapplication.ModelEmbed.Post;
+import com.example.myapplication.Modell.MediaOfPost;
 
 import java.util.List;
 
